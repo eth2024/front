@@ -1,26 +1,26 @@
 import React from "react";
-import { Icon } from "../icon";
 
-export interface NextButtonProps {
+export interface ButtonProps {
   style?: React.CSSProperties;
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  label: string;
 }
 
-const NextButton = (props: NextButtonProps) => {
-  const { style, onClick, disabled } = props;
-  // <Icon name='Warning' className="text-red" />
+const Button = (props: ButtonProps) => {
+  const { style, onClick, label, disabled } = props;
+
   return (
     <button
-      style={style}
       type="button"
+      style={style}
       disabled={disabled}
       onClick={onClick}
       className="bg-purple w-full h-58 text-18 font-bold rounded-10 disabled:bg-gray-300 disabled:text-gray-500"
     >
-      Next
+      {label}
     </button>
   );
 };
 
-export default NextButton;
+export default Button;

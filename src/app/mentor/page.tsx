@@ -1,10 +1,8 @@
-"use client";
-
 import { Icon } from "@/components/icon";
 import Navigation from "@/components/layout/Navigation";
 import Title from "@/components/layout/Title";
 
-const Home = () => {
+const MentorPage = () => {
   return (
     <div className="px-20 w-full h-full">
       <Navigation
@@ -14,10 +12,9 @@ const Home = () => {
           </button>
         }
       />
-      <Title label="What kind of person are you?" />
-      <main className="w-full">landing page</main>
+      <main className="w-full">mentor home page</main>
     </div>
   );
 };
 
-export default Home;
+export default MentorPage;
