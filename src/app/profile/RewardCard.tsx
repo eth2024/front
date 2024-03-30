@@ -14,7 +14,9 @@ const RewardCard = () => {
       </div>
       <div className="flex justify-between items-center">
         <div className="flex gap-10 items-center">
-          <div className="w-30 h-30 bg-[#D9D9D9] rounded-[100%]"></div>
+          <div className="w-30 h-30 rounded-[100%] border-solid border-1 flex items-center justify-center">
+            <img src="/images/pinklogo.svg" className="w-19 h-19" alt="" />
+          </div>
           <div className="flex flex-col h-34 text-14 justify-center">
             <span className="text-gray-500 font-medium">Picademy</span>
             <span className="font-bold">492.9</span>

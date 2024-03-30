@@ -37,12 +37,7 @@ const AnswerCard = () => {
             </div>
             <div className="flex flex-col justify-center text-14">
               <div className="font-bold">앉다</div>
-              <div
-                className="line-through text-gray-500
-"
-              >
-                누워있다
-              </div>
+              <div className="line-through text-gray-500">누워있다</div>
             </div>
           </div>
           <div className="w-30 h-30 rounded-100  ">
