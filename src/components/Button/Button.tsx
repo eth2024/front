@@ -16,7 +16,7 @@ const Button = (props: ButtonProps) => {
       style={style}
       disabled={disabled}
       onClick={onClick}
-      className="bg-purple w-full h-58 text-18 font-bold rounded-10 disabled:bg-gray-300 disabled:text-gray-500"
+      className="bg-purple text-white w-full h-58 text-18 font-bold rounded-10 disabled:bg-gray-300 disabled:text-gray-500"
     >
       {label}
     </button>

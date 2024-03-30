@@ -6,12 +6,12 @@ export interface BigChooseButtonProps {
   name?: string;
   active?: boolean;
   icon: IconType;
-  innerText: string;
+  label: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const BigChooseButton = (props: BigChooseButtonProps) => {
-  const { active, onClick, innerText, name, icon } = props;
+  const { active, onClick, label, name, icon } = props;
 
   return (
     <button
@@ -33,9 +33,9 @@ const BigChooseButton = (props: BigChooseButtonProps) => {
             className={`text-black w-full h-full ${active && "text-purple"}`}
           />
         </div>
-        <span className="font-bold font-18 text-center w-152 leading-22">
-          {innerText}
-        </span>
+        <p className="font-bold font-18 text-center w-full leading-22 whitespace-pre">
+          {label}
+        </p>
       </div>
     </button>
   );

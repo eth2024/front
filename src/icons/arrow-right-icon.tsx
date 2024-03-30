@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-const CheckFilledIcon = (props: SVGProps<SVGSVGElement>) => (
+const ArrowRightIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="1em"
     height="1em"
@@ -9,9 +9,8 @@ const CheckFilledIcon = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <rect width="1em" height="1em" rx="12" fill="currentColor" />
     <path
-      d="M7 13L10 16L17 9"
+      d="M4 12L20 12M20 12L14 18M20 12L14 6"
       stroke="currentColor"
       strokeWidth="1.5"
       strokeLinecap="round"
@@ -20,4 +19,4 @@ const CheckFilledIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export default CheckFilledIcon;
+export default ArrowRightIcon;
