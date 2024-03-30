@@ -24,7 +24,7 @@ const multipleQuiz = (props: MultipleQuizProps) => {
           />
         ))
       ) : (
-        <>Loading</>
+        <span>Loading</span>
       )}
     </div>
   );

@@ -9,6 +9,7 @@ import Title from "@/components/layout/Title";
 import MultipleQuiz from "./multipleQuiz";
 import Input from "@/components/Input/Input";
 import InputTextArea from "@/components/Input/InputTextArea";
+import FloatButton from "@/components/Button/FloatButton";
 
 interface QuizServerResult {
   question: string;
@@ -40,6 +41,8 @@ const StudyPage = () => {
     const { value } = event.target;
     setAnswer(value);
   }
+
+  const handleNextQuiz = () => {};
   console.log("answer", answer);
   return (
     <div className="w-full h-full">
@@ -89,6 +92,8 @@ const StudyPage = () => {
           />
         )}
       </div>
+
+      <FloatButton label={"Next"} onClick={handleNextQuiz} disabled={!answer} />
     </div>
   );
 };
