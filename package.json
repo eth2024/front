@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rm -rf node_modules && npm cache clean",
+    "reinstall": "npm run clean && npm install",
+    "rebuild": "npm reinstall && npm run build"
   },
   "dependencies": {
     "@babel/core": "^7.20.12",
