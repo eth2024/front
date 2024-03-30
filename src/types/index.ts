@@ -1,8 +1,6 @@
-export type ColorTheme = "dark" | "light";
-
-export type Proposal = {
-  id: number | string;
-  title: string;
-  prompt: string;
-  description: string;
-};
+export type ImageCategory =
+  | "animal"
+  | "fruit"
+  | "landscape"
+  | "vegitable"
+  | "vehicle";
