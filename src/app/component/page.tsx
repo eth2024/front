@@ -5,6 +5,7 @@ import NextButton from "@/components/Button/NextButton";
 import BigChooseButton from "@/components/Button/BigChooseButton";
 import SmallChooseButton from "@/components/Button/SmallChooseButton";
 import CardButton from "@/components/Button/CardButton";
+import Badge from "@/components/Badge/Badge";
 
 const page = () => {
   return (
@@ -16,6 +17,7 @@ const page = () => {
       <BigChooseButton icon={"Edit"} innerText="A Korean mentor who grades" />
       <SmallChooseButton innerText="걷다" />
       <CardButton src="images/test.jpeg" alt={"asd"} innerText="kpop" />
+      <Badge innerText="kpop" />
     </div>
   );
 };

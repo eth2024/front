@@ -8,7 +8,6 @@ export interface CardButtonProps {
 }
 const CardButton = (props: CardButtonProps) => {
   const { onClick, innerText, name, src, alt } = props;
-  // bg - [url("/images/test.jpeg")];
   console.log(src);
   return (
     <button
@@ -18,7 +17,7 @@ const CardButton = (props: CardButtonProps) => {
       className={`relative h-174 w-full bg-gray-500 text-black rounded-10`}
     >
       <img src={src} alt={alt} className="w-full h-full rounded-10" />
-      <span className="text-white font-bold absolute bottom-20 left-0 bg-gray-500 w-full ">
+      <span className="text-white absolute bottom-20 left-20 font-bold">
         {innerText}
       </span>
     </button>
