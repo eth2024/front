@@ -6,7 +6,7 @@ const SiginIn = () => {
   const signIn = () => {};
 
   return (
-    <div className="flex flex-col justify-center items-center w-full min-h-screen p-5 gap-20 bg-purple">
+    <div className="flex flex-col justify-center items-center w-full min-h-screen p-5 gap-20 bg-main">
       <div className="flex flex-col items-center justify-center gap-34 w-full px-20">
         <h2 className="text-white font-bold text-24">Picademy</h2>
         <Button

@@ -41,7 +41,8 @@ module.exports = {
         },
         red: "#F98686",
         green: "#99E6D9",
-        purple: "#A752E0",
+        main: "#F042BC",
+        blue: "#7FB2FF",
       },
       fontFamily: {
         sans: ["sans"],

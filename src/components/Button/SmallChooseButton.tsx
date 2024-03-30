@@ -13,7 +13,7 @@ const SmallChooseButton = (props: SmallChooseButtonProps) => {
   return (
     <button
       className={`h-120 w-full bg-white text-black rounded-10 border-solid border-1 border-gray-300 ${
-        active && "border-purple border-2"
+        active && "border-main border-2"
       }`}
       onClick={onClick}
       name={name}
@@ -21,7 +21,7 @@ const SmallChooseButton = (props: SmallChooseButtonProps) => {
       {/* inner button */}
       <div
         className={`flex flex-col w-full h-full justify-center items-center gap-10 ${
-          active && "text-purple"
+          active && "text-main"
         }`}
       >
         <span className="font-bold font-18 text-center w-152 leading-22">

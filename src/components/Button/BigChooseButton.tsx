@@ -16,7 +16,7 @@ const BigChooseButton = (props: BigChooseButtonProps) => {
   return (
     <button
       className={`h-174 w-full bg-white text-black rounded-10 border-solid border-1 border-gray-300 ${
-        active && "border-purple border-2"
+        active && "border-main border-2"
       }`}
       onClick={onClick}
       name={name}
@@ -24,13 +24,13 @@ const BigChooseButton = (props: BigChooseButtonProps) => {
       {/* inner button */}
       <div
         className={`flex flex-col w-full h-full justify-center items-center gap-10 ${
-          active && "text-purple"
+          active && "text-main"
         }`}
       >
         <div className="w-30 h-30">
           <Icon
             name={icon}
-            className={`text-black w-full h-full ${active && "text-purple"}`}
+            className={`text-black w-full h-full ${active && "text-main"}`}
           />
         </div>
         <p className="font-bold font-18 text-center w-full leading-22 whitespace-pre">
