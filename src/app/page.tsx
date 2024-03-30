@@ -6,7 +6,10 @@ import Navigation from "@/components/layout/Navigation";
 import Title from "@/components/layout/Title";
 import FloatButton from "@/components/Button/FloatButton";
 
+import useCheckAccount from "./hooks/useCheckAccount";
+
 const Home = () => {
+  useCheckAccount();
   return (
     <div className="px-20 relative w-full h-full">
       <Navigation

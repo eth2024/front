@@ -4,17 +4,17 @@ export interface SmallChooseButtonProps {
   id?: string;
   dataKey?: string;
   active?: boolean;
-  innerText: string;
+  label: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const SmallChooseButton = (props: SmallChooseButtonProps) => {
-  const { active, onClick, innerText, id, dataKey } = props;
+  const { active, onClick, label, id, dataKey } = props;
 
   return (
     <button
-      className={`h-120 w-full bg-white text-black rounded-10 border-solid border-1 border-gray-300 ${
-        active && "border-main border-2"
+      className={`h-120 w-168 bg-white text-black rounded-10 border-solid border-1 border-gray-300 ${
+        active && "border-purple border-2"
       }`}
       onClick={onClick}
       id={id}
@@ -23,11 +23,11 @@ const SmallChooseButton = (props: SmallChooseButtonProps) => {
       {/* inner button */}
       <div
         className={`flex flex-col w-full h-full justify-center items-center gap-10 ${
-          active && "text-main"
+          active && "text-purple"
         }`}
       >
         <span className="font-bold font-18 text-center w-152 leading-22">
-          {innerText}
+          {label}
         </span>
       </div>
     </button>
