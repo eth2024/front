@@ -6,18 +6,20 @@ export interface InputProps {
   errorMessage?: string;
   placeholder?: string;
   value?: string | number | readonly string[];
+  name?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const PLACEHOLDER_ENTER_KOREAN = "Please enter in Korean words.";
 
 const Input = (props: InputProps) => {
-  const { style, errorMessage, placeholder, onChange, value } = props;
+  const { style, errorMessage, placeholder, onChange, value, name } = props;
 
   return (
     <div className="relative">
       <input
         style={style}
+        name={name}
         type="text"
         value={value}
         className={`w-full h-50 p-8 border-1 border-solid rounded-10 
