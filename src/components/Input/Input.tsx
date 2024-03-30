@@ -6,7 +6,7 @@ export interface InputProps {
   errorMessage?: string;
   placeholder?: string;
   value?: string | number | readonly string[];
-  onChange?: (event: any) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const PLACEHOLDER_ENTER_KOREAN = "Please enter in Korean words.";
@@ -20,9 +20,9 @@ const Input = (props: InputProps) => {
         style={style}
         type="text"
         value={value}
-        className={`w-full h-50 p-8 border-1 border-solid rounded-10 border-gray 
-        ${errorMessage && "border-red"} 
-        text-black `}
+        className={`w-full h-50 p-8 border-1 border-solid rounded-10 
+        ${errorMessage ? " border-red " : " border-gray-300 "} 
+        text-black`}
         placeholder={placeholder}
         onChange={onChange}
       />
