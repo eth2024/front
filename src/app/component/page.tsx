@@ -13,8 +13,12 @@ const page = () => {
       components
       <Input errorMessage="Please write more concisely" />
       <InputTextArea />
-      <NextButton />
-      <BigChooseButton icon={"Edit"} innerText="A Korean mentor who grades" />
+      <NextButton label="Next" />
+      <BigChooseButton
+        icon={"Edit"}
+        innerText="A Korean mentor who grades"
+        active
+      />
       <SmallChooseButton innerText="걷다" />
       <CardButton src="images/test.jpeg" alt={"asd"} innerText="kpop" />
       <Badge innerText="kpop" />
