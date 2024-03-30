@@ -7,16 +7,19 @@ import { useRouter } from "next/navigation";
 
 const StudentHome = () => {
   const router = useRouter();
+
   function onClickHandler(event: React.MouseEvent<HTMLButtonElement>) {
-    router.replace("/student/study");
-    // const { name } = event.currentTarget;
-    // console.log(name);
+    const { name } = event.currentTarget;
+    if (name === "profile") {
+      return router.push("/profile");
+    }
+    router.push("/student/study");
   }
   return (
     <div className="px-20 w-full h-full">
       <Navigation
         rightItem={
-          <button className="w-24 h-24">
+          <button className="w-24 h-24" name="profile" onClick={onClickHandler}>
             <Icon name="User" className="text-24" />
           </button>
         }

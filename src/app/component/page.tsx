@@ -6,6 +6,7 @@ import BigChooseButton from "@/components/Button/BigChooseButton";
 import SmallChooseButton from "@/components/Button/SmallChooseButton";
 import CardButton from "@/components/Button/CardButton";
 import Badge from "@/components/Badge/Badge";
+import ClaimButton from "@/components/Button/ClaimButton";
 
 const page = () => {
   return (
@@ -19,9 +20,10 @@ const page = () => {
         label="A Korean mentor who grades"
         active
       />
-      <SmallChooseButton innerText="걷다" />
+      <SmallChooseButton label="걷다" />
       <CardButton src="images/test.jpeg" alt={"asd"} label="kpop" />
       <Badge label="kpop" />
+      <ClaimButton />
     </div>
   );
 };

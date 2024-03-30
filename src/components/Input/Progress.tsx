@@ -1,3 +1,4 @@
+"use client";
 import { Line } from "rc-progress";
 
 interface ProgressBarProps {
