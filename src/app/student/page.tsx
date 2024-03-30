@@ -27,12 +27,12 @@ const StudentHome = () => {
           name="Kpop"
           src="/images/test.jpeg"
           alt="Kpop"
-          innerText="Kpop"
+          label="Kpop"
           onClick={onClickHandler}
         />
-        <CardButton src="/images/test.jpeg" alt="Animal" innerText="Animal" />
-        <CardButton src="/images/test.jpeg" alt="Load" innerText="Load" />
-        <CardButton src="/images/test.jpeg" alt="Kpop" innerText="Kpop" />
+        <CardButton src="/images/test.jpeg" alt="Animal" label="Animal" />
+        <CardButton src="/images/test.jpeg" alt="Load" label="Load" />
+        <CardButton src="/images/test.jpeg" alt="Kpop" label="Kpop" />
       </main>
     </div>
   );

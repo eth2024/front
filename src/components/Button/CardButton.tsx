@@ -2,13 +2,13 @@
 import React from "react";
 export interface CardButtonProps {
   name?: string;
-  innerText: string;
+  label: string;
   src: string;
   alt: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 const CardButton = (props: CardButtonProps) => {
-  const { onClick, innerText, name, src, alt } = props;
+  const { onClick, label, name, src, alt } = props;
   console.log(src);
   return (
     <button
@@ -19,7 +19,7 @@ const CardButton = (props: CardButtonProps) => {
     >
       <img src={src} alt={alt} className="w-full h-full rounded-10" />
       <span className="text-white absolute bottom-20 left-20 font-bold">
-        {innerText}
+        {label}
       </span>
     </button>
   );
