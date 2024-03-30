@@ -16,12 +16,12 @@ const page = () => {
       <NextButton label="Next" />
       <BigChooseButton
         icon={"Edit"}
-        innerText="A Korean mentor who grades"
+        label="A Korean mentor who grades"
         active
       />
       <SmallChooseButton innerText="걷다" />
-      <CardButton src="images/test.jpeg" alt={"asd"} innerText="kpop" />
-      <Badge innerText="kpop" />
+      <CardButton src="images/test.jpeg" alt={"asd"} label="kpop" />
+      <Badge label="kpop" />
     </div>
   );
 };

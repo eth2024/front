@@ -12,7 +12,7 @@ const SiginIn = () => {
         <Button
           label="Connect to wallet"
           onClick={signIn}
-          style={{ backgroundColor: "white", color: "#A752E0" }}
+          style={{ backgroundColor: "white", color: "#F042BC" }}
         />
       </div>
     </div>

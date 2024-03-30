@@ -1,14 +1,15 @@
 "use client";
 import React from "react";
 export interface SmallChooseButtonProps {
-  name?: string;
+  id?: string;
+  dataKey?: string;
   active?: boolean;
   innerText: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const SmallChooseButton = (props: SmallChooseButtonProps) => {
-  const { active, onClick, innerText, name } = props;
+  const { active, onClick, innerText, id, dataKey } = props;
 
   return (
     <button
@@ -16,7 +17,8 @@ const SmallChooseButton = (props: SmallChooseButtonProps) => {
         active && "border-main border-2"
       }`}
       onClick={onClick}
-      name={name}
+      id={id}
+      data-key={dataKey}
     >
       {/* inner button */}
       <div

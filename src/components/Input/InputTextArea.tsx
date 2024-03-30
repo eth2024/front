@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface InputFieldProps {
+export interface InputTextAreaProps {
   style?: React.CSSProperties;
   placeholder?: string;
   value?: string | number | readonly string[];
@@ -8,7 +8,7 @@ export interface InputFieldProps {
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const InputField = (props: InputFieldProps) => {
+const InputTextArea = (props: InputTextAreaProps) => {
   const { style, placeholder, onChange, value, name } = props;
 
   return (
@@ -23,4 +23,4 @@ const InputField = (props: InputFieldProps) => {
   );
 };
 
-export default InputField;
+export default InputTextArea;

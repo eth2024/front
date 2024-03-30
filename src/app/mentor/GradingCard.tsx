@@ -30,7 +30,7 @@ const GradingCard = ({
         </div>
 
         <div className="flex flex-col items-center px-20 text-gray-900">
-          <Badge innerText={category} />
+          <Badge label={category} />
           <p className="font-bold text-22 text-center px-36 py-20 whitespace-pre-line">
             {question}
           </p>

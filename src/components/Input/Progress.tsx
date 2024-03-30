@@ -11,7 +11,7 @@ const ProgressBar = ({ progress }: ProgressBarProps) => {
         percent={progress}
         strokeWidth={3}
         trailWidth={3}
-        strokeColor="#A752E0"
+        strokeColor="#F042BC"
         trailColor="#F2F4F7"
       />
     </div>
