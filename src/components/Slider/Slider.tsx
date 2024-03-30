@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
 import Image from "next/image";
 import ReactSlider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useRouter } from "next/navigation";
 
 const settings = {
   infinite: true,

@@ -1,11 +1,13 @@
+"use client";
+
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/router";
 import Image from "next/image";
 
 import { cls } from "@/utils/tailwindCss";
 import { Proposal } from "@/types";
 import { VoteCreateModal, VoteModal } from "@/components/Modal";
 import { ProposalCard } from "@/components/Vote/ProposalCard";
+import { useRouter } from "next/navigation";
 
 const VOTE_CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_VOTE_CONTRACT_NAME;
 const VOTE_PROPOSAL_CONTRACT_ADDRESS =
@@ -22,7 +24,7 @@ const wallet = {
   startVote: (address: any, voteId: any, id: any) => {},
 };
 
-const Vote = () => {
+const Vote = ({ params }: { params: { id: string } }) => {
   const [voteProposalAddress] = useState<string>(
     VOTE_PROPOSAL_CONTRACT_ADDRESS as string
   );
@@ -33,7 +35,7 @@ const Vote = () => {
   const [proposal, setProposal] = useState<Proposal | null>(null);
 
   const router = useRouter();
-  const comicId = router.query.id;
+  const comicId = params.id;
 
   const isBlurBackground = useMemo(
     () => isOpenVoteCreateModal || isOpenVoteModal,

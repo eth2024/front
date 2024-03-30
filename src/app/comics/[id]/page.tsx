@@ -1,20 +1,22 @@
+"use client";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 
 import { cls } from "@/utils/tailwindCss";
 import { getWalletAuthKey } from "@/utils/auth";
 import { dummyComic, dummyComicCuts } from "@/data";
+import { useRouter } from "next/navigation";
 
-const Comic = () => {
+const Comic = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
   const backgroundRef = useRef<HTMLDivElement>(null);
 
   const [currentEpisode, setCurrentEpisode] = useState<number>(0);
   const [isHideNav, setIsHideNav] = useState<boolean>(false);
 
-  const comicId = router.query.id;
+  const comicId = params.id;
   const comic = dummyComic.find(({ id }) => id === comicId);
   const comicCuts = dummyComicCuts.find(
     ({ communityId }) => communityId === comic?.id
