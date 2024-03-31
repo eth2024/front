@@ -1,16 +1,21 @@
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useAccount } from "wagmi";
 
-const useCheckAccount = () => {
+const useCheckAccount = (isAuth?: boolean) => {
   const router = useRouter();
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
 
   useEffect(() => {
-    if (!isConnected) {
+    if (!isConnected && isAuth) {
       router.replace("/signin");
     }
-  }, [isConnected, router]);
+  }, [isAuth, isConnected, router]);
+
+  return {
+    isConnected,
+    address,
+  };
 };
 
 export default useCheckAccount;
