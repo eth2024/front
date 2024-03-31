@@ -17,6 +17,18 @@ export const useGetImage = (category: ImageCategory) =>
     },
   });
 
+export const useGetMatchedImage = () =>
+  useQuery({
+    queryKey: ["get_image"],
+    queryFn: async () => {
+      const { data }: { data: { data: ImageData[] } } = await axios(
+        `${SERVER_URL}/image/matched`
+      );
+
+      return data.data as ImageData[];
+    },
+  });
+
 export const useMatchImage = (userAddress?: string) =>
   useMutation({
     mutationFn: async ({
@@ -26,9 +38,38 @@ export const useMatchImage = (userAddress?: string) =>
       imageId: string;
       word: string;
     }) => {
-      if (userAddress) return;
-
       await axios.post(`${SERVER_URL}/image/match`, {
+        userAddress,
+        imageId,
+        word,
+      });
+    },
+  });
+
+export const useVerifyImage = (userAddress?: string) =>
+  useMutation({
+    mutationFn: async ({ imageId }: { imageId: string }) => {
+      if (!userAddress) return;
+
+      await axios.post(`${SERVER_URL}/image/verify`, {
+        userAddress,
+        imageId,
+      });
+    },
+  });
+
+export const useModifyImage = (userAddress?: string) =>
+  useMutation({
+    mutationFn: async ({
+      imageId,
+      word,
+    }: {
+      imageId: string;
+      word: string;
+    }) => {
+      if (!userAddress) return;
+
+      await axios.post(`${SERVER_URL}/image/verify`, {
         userAddress,
         imageId,
         word,

@@ -3,7 +3,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
-export const useGetUser = (address: string) =>
+export const useGetUser = (address?: string) =>
   useQuery({
     queryKey: ["get_user", address],
     queryFn: async () => {
@@ -13,10 +13,11 @@ export const useGetUser = (address: string) =>
     },
   });
 
-export const useRegisterUser = () =>
+export const useRegisterUser = (enabled?: boolean) =>
   useMutation({
     mutationFn: async (address: string) => {
-      const { data } = await axios.post(`${SERVER_URL}/user/${address}`, {
+      if (!enabled) return;
+      const { data } = await axios.post(`${SERVER_URL}/user/register`, {
         address,
       });
 

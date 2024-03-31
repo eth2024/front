@@ -11,6 +11,8 @@ export type ImageData = {
   confirmed: boolean;
   matched: boolean;
   name: string;
+  word: string;
   createdAt: Date;
   updatedAt: Date;
+  category: ImageCategory;
 };

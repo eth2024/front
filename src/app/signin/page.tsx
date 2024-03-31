@@ -15,7 +15,8 @@ const SiginIn = () => {
     if (isConnected) {
       router.replace("/");
     }
-  }, [isConnected]);
+  }, [isConnected, router]);
+
   return (
     <div className="flex flex-col justify-center items-center w-full min-h-screen p-5 gap-20 bg-main">
       <div className="flex flex-col items-center justify-center gap-34 w-full px-20">

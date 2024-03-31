@@ -24,7 +24,7 @@ const GradingCard = ({
 }: GradingCardProps) => {
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="bg-white flex w-full flex-col gap-50 rounded-10 pb-40 overflow-y-scroll">
+      <div className="bg-white flex w-full flex-col gap-20 rounded-10 pb-40 overflow-y-scroll">
         <div className="rounded-t-10 overflow-hidden">
           <img src={img} alt="check-img" />
         </div>
@@ -34,7 +34,7 @@ const GradingCard = ({
           <p className="font-bold text-22 text-center px-36 py-20 whitespace-pre-line">
             {question}
           </p>
-          <div className="w-full font-medium bg-gray-100 border-gray-200 border h-160 flex justify-center items-center rounded-10 text-16">
+          <div className="w-full font-medium bg-gray-100 border-gray-200 border h-120 flex justify-center items-center rounded-10 text-16">
             <textarea
               className="w-full h-min text-center bg-gray-100 px-20"
               disabled={!isWrongAnswer}

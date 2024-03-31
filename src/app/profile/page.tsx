@@ -18,7 +18,7 @@ const ProfilePage = () => {
           </button>
         }
         rightItem={
-          <button className="w-24 h-24">
+          <button className="w-24 h-24" onClick={() => router.push("/")}>
             <Icon name="Settings" className="text-24" />
           </button>
         }

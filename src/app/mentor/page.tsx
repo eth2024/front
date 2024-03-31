@@ -1,13 +1,22 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Slider, { Settings } from "react-slick";
+import JSConfetti from "js-confetti";
 
 import { cls } from "@/utils/tailwindCss";
 import { Icon } from "@/components/icon";
 import Navigation from "@/components/layout/Navigation";
 import GradingCard from "./GradingCard";
 import { useRouter } from "next/navigation";
+import {
+  useGetMatchedImage,
+  useModifyImage,
+  useVerifyImage,
+} from "@/state/react-query/image";
+import useCheckAccount from "../hooks/useCheckAccount";
+
+const jsConfetti = new JSConfetti();
 
 const settings: Settings = {
   dots: false,
@@ -22,9 +31,14 @@ const settings: Settings = {
 
 const MentorPage = () => {
   const router = useRouter();
+  const { address } = useCheckAccount();
+  const { data } = useGetMatchedImage();
+  const { mutate: verify } = useVerifyImage(address);
+  const { mutate: modify } = useModifyImage(address);
   const sliderRef = useRef<Slider>(null);
   const [isWrongAnswer, setIsWrongAnswer] = useState<boolean>(false);
-  const [currentAnswer, setCurrentAnswer] = useState<string>("웃다");
+  const [currentAnswer, setCurrentAnswer] = useState<string>("");
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   const handleProfile = () => {
     router.replace("/profile");
@@ -35,15 +49,23 @@ const MentorPage = () => {
 
   const beforeChange = (currentSlide: number, nextSlide: number) => {
     if (currentSlide === nextSlide) {
-      alert("채점 완료");
+      jsConfetti.addConfetti();
+      setTimeout(() => {
+        alert("채점 완료");
+      }, 1000);
       return;
     }
 
-    setCurrentAnswer("웃다");
+    data && setCurrentAnswer(data[nextSlide].word);
     setIsWrongAnswer(false);
+    setCurrentSlide(currentSlide);
   };
 
   const onComplete = () => {
+    if (!data) return;
+
+    const currentImage = data[currentSlide];
+    verify({ imageId: currentImage.id });
     handleNext();
   };
 
@@ -58,8 +80,16 @@ const MentorPage = () => {
       return;
     }
 
+    if (!data) return;
+
+    const currentImage = data[currentSlide];
+    modify({ imageId: currentImage.id, word: currentAnswer });
     onComplete();
   };
+
+  useEffect(() => {
+    data && setCurrentAnswer(data[0].word);
+  }, [data]);
 
   return (
     <div className="w-full flex flex-col h-full bg-gray-100">
@@ -80,15 +110,15 @@ const MentorPage = () => {
           {...settings}
           beforeChange={beforeChange}
         >
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="px-20">
+          {data?.map((image) => (
+            <div key={image.id} className="px-20">
               <GradingCard
-                id={`${i}`}
-                img={"/images/test.jpeg"}
-                category="Kpop"
-                question="다음 사진 속 사람의 표정은 무엇인가요?"
+                id={image.id}
+                img={image.url}
+                category={image.category}
+                question={`What is the ${image.category}\nin the picture?`}
                 answer={currentAnswer}
-                date={new Date()}
+                date={image.updatedAt}
                 isWrongAnswer={isWrongAnswer}
                 handleAnswer={setCurrentAnswer}
               />
