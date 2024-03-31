@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Slider, { Settings } from "react-slick";
 import JSConfetti from "js-confetti";
 
@@ -16,8 +16,6 @@ import {
 } from "@/state/react-query/image";
 import useCheckAccount from "../hooks/useCheckAccount";
 
-const jsConfetti = new JSConfetti();
-
 const settings: Settings = {
   dots: false,
   arrows: false,
@@ -31,6 +29,11 @@ const settings: Settings = {
 
 const MentorPage = () => {
   const router = useRouter();
+  const jsConfetti = useMemo(() => {
+    if (typeof document !== "undefined") {
+      return new JSConfetti();
+    }
+  }, []);
   const { address } = useCheckAccount();
   const { data } = useGetMatchedImage();
   const { mutate: verify } = useVerifyImage(address);
@@ -49,7 +52,7 @@ const MentorPage = () => {
 
   const beforeChange = (currentSlide: number, nextSlide: number) => {
     if (currentSlide === nextSlide) {
-      jsConfetti.addConfetti();
+      jsConfetti && jsConfetti.addConfetti();
       setTimeout(() => {
         alert("채점 완료");
       }, 1000);

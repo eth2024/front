@@ -15,7 +15,7 @@ const multipleQuiz = (props: MultipleQuizProps) => {
       {challenge ? (
         challenge.map((challenge, index) => (
           <SmallChooseButton
-            innerText={challenge}
+            label={challenge}
             active={challenge === answer}
             key={index}
             id={`${challenge}_${index}`}
