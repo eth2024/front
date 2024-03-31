@@ -13,9 +13,9 @@ export const useGetUser = (address: string) =>
     },
   });
 
-export const useRegisterUser = (address: string) =>
+export const useRegisterUser = () =>
   useMutation({
-    mutationFn: async () => {
+    mutationFn: async (address: string) => {
       const { data } = await axios.post(`${SERVER_URL}/user/${address}`, {
         address,
       });

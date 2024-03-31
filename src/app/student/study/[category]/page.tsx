@@ -12,22 +12,26 @@ import Input from "@/components/Input/Input";
 import MultipleQuiz from "../multipleQuiz";
 import InputTextArea from "@/components/Input/InputTextArea";
 import FloatButton from "@/components/Button/FloatButton";
-import { useGetImage } from "@/state/react-query/image";
+import { useGetImage, useMatchImage } from "@/state/react-query/image";
 
 const jsConfetti = new JSConfetti();
 
 import type { ImageCategory, ImageData } from "@/types";
+import useCheckAccount from "@/app/hooks/useCheckAccount";
 
 const StudyPage = ({ params }: { params: { category: ImageCategory } }) => {
+  const { address } = useCheckAccount();
   const category = params.category;
-  const { data } = useGetImage(category);
+
   const router = useRouter();
+  const { data } = useGetImage(category);
+  const { mutate } = useMatchImage(address);
 
   const [progress, setProgress] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
   const [current, setCurrent] = useState<ImageData>();
 
-  const [answer, setAnswer] = useState<string>();
+  const [answer, setAnswer] = useState<string>("");
   const isDone = data && count >= data.length;
 
   function onChangeHandler(
@@ -44,6 +48,10 @@ const StudyPage = ({ params }: { params: { category: ImageCategory } }) => {
     if (nextCount > data.length) {
       router.push("/");
       return;
+    }
+
+    if (current) {
+      mutate({ imageId: current.id, word: answer });
     }
 
     setCount(nextCount);
