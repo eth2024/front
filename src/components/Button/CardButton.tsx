@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 export interface CardButtonProps {
   name?: string;
   label: string;
@@ -7,9 +7,10 @@ export interface CardButtonProps {
   alt: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
+
 const CardButton = (props: CardButtonProps) => {
   const { onClick, label, name, src, alt } = props;
-  console.log(src);
+
   return (
     <button
       type="button"
