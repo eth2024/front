@@ -4,6 +4,7 @@ import Navigation from "@/components/layout/Navigation";
 import AccountCard from "./AccountCard";
 import RewardCard from "./RewardCard";
 import AnswerCard from "./AnswerCard";
+import ScoreCard from "./ScoreCard";
 import { useRouter } from "next/navigation";
 
 const ProfilePage = () => {
@@ -22,10 +23,11 @@ const ProfilePage = () => {
           </button>
         }
       />
-      <main className="flex flex-col gap-20 w-full mt-20">
+      <main className="flex flex-col gap-20 w-full mt-20 mb-20">
         <AccountCard />
         <RewardCard />
         <AnswerCard />
+        <ScoreCard />
       </main>
     </div>
   );

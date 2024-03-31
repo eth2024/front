@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { Icon } from "@/components/icon";
@@ -7,12 +8,13 @@ import BigChooseButton from "@/components/Button/BigChooseButton";
 import Navigation from "@/components/layout/Navigation";
 import Title from "@/components/layout/Title";
 import FloatButton from "@/components/Button/FloatButton";
-import { useState } from "react";
+import useCheckAccount from "./hooks/useCheckAccount";
 
 const Home = () => {
   const router = useRouter();
   const [isMentor, setIsMentor] = useState<boolean>(false);
 
+  useCheckAccount();
   return (
     <div className="px-20 relative w-full h-full">
       <Navigation
