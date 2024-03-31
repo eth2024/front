@@ -7,6 +7,7 @@ import { cls } from "@/utils/tailwindCss";
 import { Icon } from "@/components/icon";
 import Navigation from "@/components/layout/Navigation";
 import GradingCard from "./GradingCard";
+import { useRouter } from "next/navigation";
 
 const settings: Settings = {
   dots: false,
@@ -20,10 +21,14 @@ const settings: Settings = {
 };
 
 const MentorPage = () => {
+  const router = useRouter();
   const sliderRef = useRef<Slider>(null);
   const [isWrongAnswer, setIsWrongAnswer] = useState<boolean>(false);
   const [currentAnswer, setCurrentAnswer] = useState<string>("웃다");
 
+  const handleProfile = () => {
+    router.replace("/profile");
+  };
   const handleNext = () => {
     sliderRef.current?.slickNext();
   };
@@ -61,7 +66,7 @@ const MentorPage = () => {
       <div className="px-20">
         <Navigation
           rightItem={
-            <button className="w-24 h-24" onClick={handleNext}>
+            <button className="w-24 h-24" onClick={handleProfile}>
               <Icon name="User" className="text-24" />
             </button>
           }

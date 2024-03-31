@@ -2,7 +2,7 @@ import Button from "./Button";
 
 interface FloatButtonProps {
   label: string;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   disabled?: boolean;
 }
 

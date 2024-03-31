@@ -2,18 +2,20 @@
 
 import Button from "@/components/Button/Button";
 import { useRouter } from "next/navigation";
-import { useConnect, useAccountEffect } from "wagmi";
+import { useEffect } from "react";
+import { useAccount, useConnect } from "wagmi";
 import { injected } from "wagmi/connectors";
 
 const SiginIn = () => {
   const { connect } = useConnect();
+  const { isConnected } = useAccount();
   const router = useRouter();
-  useAccountEffect({
-    onConnect: (data) => {
-      data.address && router.replace("/");
-    },
-  });
 
+  useEffect(() => {
+    if (isConnected) {
+      router.replace("/");
+    }
+  }, [isConnected]);
   return (
     <div className="flex flex-col justify-center items-center w-full min-h-screen p-5 gap-20 bg-main">
       <div className="flex flex-col items-center justify-center gap-34 w-full px-20">

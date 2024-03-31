@@ -11,10 +11,28 @@ import FloatButton from "@/components/Button/FloatButton";
 import useCheckAccount from "./hooks/useCheckAccount";
 
 const Home = () => {
-  const router = useRouter();
-  const [isMentor, setIsMentor] = useState<boolean>(false);
-
   useCheckAccount();
+  const router = useRouter();
+  const [select, setSelect] = useState<string>();
+
+  function onClickHandler(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    console.log(event.currentTarget.name);
+    const { name } = event.currentTarget;
+    setSelect(name);
+  }
+
+  function onFloatButtonClickHandler(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    if (select === "student") {
+      return router.replace("/student/");
+    } else {
+      router.replace("/mentor/");
+    }
+  }
+
   return (
     <div className="px-20 relative w-full h-full">
       <Navigation
@@ -30,20 +48,23 @@ const Home = () => {
         <BigChooseButton
           label={"Student \nwho wants to learn Korean"}
           icon="Edit"
-          onClick={() => setIsMentor(false)}
-          active={!isMentor}
+          name="student"
+          active={select === "student"}
+          onClick={onClickHandler}
         />
         <BigChooseButton
-          label={"Korean mentor \nwho grades"}
+          label={"A Korean mentor \nwho grades"}
           icon="Check"
-          onClick={() => setIsMentor(true)}
-          active={isMentor}
+          name="mentor"
+          active={select === "mentor"}
+          onClick={onClickHandler}
         />
       </main>
 
       <FloatButton
         label="Next"
-        onClick={() => router.push(isMentor ? "/mentor" : "/student")}
+        onClick={onFloatButtonClickHandler}
+        disabled={!select}
       />
     </div>
   );
