@@ -12,6 +12,6 @@ export const useGetImage = (category: ImageCategory) =>
         `${SERVER_URL}/image/${category}`
       );
 
-      return data.data as ImageData[];
+      return data.data.slice(0, 5) as ImageData[];
     },
   });

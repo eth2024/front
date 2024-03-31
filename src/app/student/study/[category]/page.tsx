@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import JSConfetti from "js-confetti";
 
 import { Icon } from "@/components/icon";
 import Progress from "@/components/Input/Progress";
@@ -12,6 +13,8 @@ import MultipleQuiz from "../multipleQuiz";
 import InputTextArea from "@/components/Input/InputTextArea";
 import FloatButton from "@/components/Button/FloatButton";
 import { useGetImage } from "@/state/react-query/image";
+
+const jsConfetti = new JSConfetti();
 
 import type { ImageCategory, ImageData } from "@/types";
 
@@ -45,8 +48,12 @@ const StudyPage = ({ params }: { params: { category: ImageCategory } }) => {
 
     setCount(nextCount);
     setCurrent(data[nextCount]);
-    setProgress(nextCount * 10);
+    setProgress(nextCount * (100 / data.length));
     setAnswer("");
+
+    if (nextCount === data.length) {
+      jsConfetti.addConfetti();
+    }
   };
 
   useEffect(() => {
