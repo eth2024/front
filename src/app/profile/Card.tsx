@@ -2,7 +2,7 @@ import React from "react";
 
 export interface CardProps {
   children: React.ReactNode;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 const Card = (props: CardProps) => {

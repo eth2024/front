@@ -3,11 +3,12 @@
 import Button from "@/components/Button/Button";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useAccount, useConnect } from "wagmi";
-import { injected } from "wagmi/connectors";
+import { useAccount } from "wagmi";
 
-const SiginIn = () => {
-  const { connect } = useConnect();
+import { useWeb3Modal } from "@web3modal/wagmi/react";
+
+const SignIn = () => {
+  const { open } = useWeb3Modal();
   const { isConnected } = useAccount();
   const router = useRouter();
 
@@ -15,7 +16,7 @@ const SiginIn = () => {
     if (isConnected) {
       router.replace("/");
     }
-  }, [isConnected]);
+  }, [isConnected, router]);
   return (
     <div className="flex flex-col justify-center items-center w-full min-h-screen p-5 gap-20 bg-main">
       <div className="flex flex-col items-center justify-center gap-34 w-full px-20">
@@ -26,7 +27,8 @@ const SiginIn = () => {
         <Button
           label="Connect to wallet"
           onClick={() => {
-            connect({ connector: injected() });
+            // connect({ connector: connectors[0] });
+            open();
           }}
           style={{ backgroundColor: "white", color: "#F042BC" }}
         />
@@ -35,4 +37,4 @@ const SiginIn = () => {
   );
 };
 
-export default SiginIn;
+export default SignIn;

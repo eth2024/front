@@ -11,11 +11,11 @@ const multipleQuiz = (props: MultipleQuizProps) => {
   const { challenge, answer, onClick } = props;
 
   return (
-    <div className="w-full gap-14 grid grid-cols-2">
+    <div className="w-full flex gap-14 flex-wrap">
       {challenge ? (
         challenge.map((challenge, index) => (
           <SmallChooseButton
-            innerText={challenge}
+            label={challenge}
             active={challenge === answer}
             key={index}
             id={`${challenge}_${index}`}
@@ -24,7 +24,7 @@ const multipleQuiz = (props: MultipleQuizProps) => {
           />
         ))
       ) : (
-        <span>Loading</span>
+        <>Loading</>
       )}
     </div>
   );
