@@ -27,6 +27,7 @@ const Input = (props: InputProps) => {
         text-black`}
         placeholder={placeholder}
         onChange={onChange}
+        autoFocus
       />
       {errorMessage && (
         <>

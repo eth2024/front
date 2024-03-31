@@ -1,41 +1,56 @@
 "use client";
+
+import { useRouter } from "next/navigation";
+
 import { Icon } from "@/components/icon";
 import Navigation from "@/components/layout/Navigation";
 import Title from "@/components/layout/Title";
 import CardButton from "@/components/Button/CardButton";
-import { useRouter } from "next/navigation";
+
+import type { ImageCategory } from "@/types";
 
 const StudentHome = () => {
   const router = useRouter();
 
-  function onClickHandler(event: React.MouseEvent<HTMLButtonElement>) {
-    const { name } = event.currentTarget;
-    if (name === "profile") {
-      return router.push("/profile");
-    }
-    router.push("/student/study");
-  }
+  const handleClick = (category: ImageCategory) => {
+    router.push(`/student/study/${category}`);
+  };
+
+  const studyCategory: ImageCategory[] = [
+    "animal",
+    "vehicle",
+    "landscape",
+    "fruit",
+    "vegitable",
+  ];
+
   return (
     <div className="px-20 w-full h-full">
       <Navigation
         rightItem={
-          <button className="w-24 h-24" name="profile" onClick={onClickHandler}>
+          <button
+            type="button"
+            className="w-24 h-24"
+            onClick={() => router.push("/profile")}
+          >
             <Icon name="User" className="text-24" />
           </button>
         }
       />
       <Title label="Please choose a category you want to study!" />
-      <main className="w-full flex flex-col gap-20 mt-40">
-        <CardButton
-          name="Kpop"
-          src="/images/test.jpeg"
-          alt="Kpop"
-          label="Kpop"
-          onClick={onClickHandler}
-        />
-        <CardButton src="/images/test.jpeg" alt="Animal" label="Animal" />
-        <CardButton src="/images/test.jpeg" alt="Load" label="Load" />
-        <CardButton src="/images/test.jpeg" alt="Kpop" label="Kpop" />
+      <main className="w-full py-40">
+        <ul className="flex flex-col gap-10 overflow-y-scroll">
+          {studyCategory.map((category) => (
+            <li key={category}>
+              <CardButton
+                src={`/images/${category}.png`}
+                alt={`${category}_thumbnail`}
+                label={category}
+                onClick={() => handleClick(category)}
+              />
+            </li>
+          ))}
+        </ul>
       </main>
     </div>
   );
