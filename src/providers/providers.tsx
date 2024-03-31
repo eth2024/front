@@ -31,6 +31,9 @@ const config = defaultWagmiConfig({
 // 3. Create modal
 createWeb3Modal({
   wagmiConfig: config,
+  featuredWalletIds: [
+    "855481a23310c2bccf2a6134367449d61bd2f1c8793f929516c4f68a6aaace7a",
+  ],
   projectId,
   enableAnalytics: true, // Optional - defaults to your Cloud configuration
   enableOnramp: true, // Optional - false as default
